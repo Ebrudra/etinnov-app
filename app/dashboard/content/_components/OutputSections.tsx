@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Copy, Check } from 'lucide-react'
 import { marked } from 'marked'
 
-const ReactQuill = dynamic(() => import('react-quill'), { 
+const ReactQuill = dynamic(() => import('react-quill'), {
   ssr: false,
   loading: () => <p>Loading Editor...</p>,
 })
@@ -19,7 +19,7 @@ function OutputSection({ aiOutput }: PROPS) {
   const [isCopied, setIsCopied] = useState(false);
   const [editorContent, setEditorContent] = useState('');
   const [isRTL, setIsRTL] = useState(false);
-  const quillRef = useRef<any>(null);
+  //const quillRef = useRef<any>(null);
 
   useEffect(() => {
     const convertMarkdown = async () => {
@@ -34,13 +34,19 @@ function OutputSection({ aiOutput }: PROPS) {
     convertMarkdown();
   }, [aiOutput]);
 
-  useEffect(() => {
-    if (quillRef.current) {
-      const quill = quillRef.current.getEditor();
-      quill.root.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+  // useEffect(() => {
+  //   if (quillRef.current) {
+  //     const quill = quillRef.current.getEditor();
+  //     quill.root.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+  //   }
+  // }, [isRTL]);
+  const handleEditorChange = (content: string) => {
+    setEditorContent(content);
+    const quillEditor = document.querySelector('.ql-editor');
+    if (quillEditor) {
+      quillEditor.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
     }
-  }, [isRTL]);
-
+  };
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(aiOutput);
@@ -55,7 +61,7 @@ function OutputSection({ aiOutput }: PROPS) {
     toolbar: [
       [{ 'header': [1, 2, 3, false] }],
       ['bold', 'italic', 'underline', 'strike'],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       [{ 'align': [] }],
       ['link', 'image'],
       ['clean'],
@@ -63,9 +69,9 @@ function OutputSection({ aiOutput }: PROPS) {
     ],
   };
 
-  const handleEditorChange = (content: string) => {
-    setEditorContent(content);
-  };
+  //const handleEditorChange = (content: string) => {
+  //  setEditorContent(content);
+  //};
 
   const handleDirectionChange = () => {
     setIsRTL(!isRTL);
@@ -76,9 +82,9 @@ function OutputSection({ aiOutput }: PROPS) {
       <div className='flex justify-between items-center p-5'>
         <h2 className='font-medium text-lg'>Your Result</h2>
         <div>
-          <Button className='mr-2' onClick={handleDirectionChange}>
+          {/* <Button className='mr-2' onClick={handleDirectionChange}>
             {isRTL ? 'LTR' : 'RTL'}
-          </Button>
+          </Button> */}
           <Button className='flex gap-2' onClick={handleCopy}>
             {isCopied ? (
               <>
@@ -96,13 +102,12 @@ function OutputSection({ aiOutput }: PROPS) {
       </div>
       {typeof window !== 'undefined' && (
         <ReactQuill
-          ref={quillRef}
           value={editorContent}
           onChange={handleEditorChange}
           modules={modules}
           theme="snow"
-          style={{ 
-            height: '600px', 
+          style={{
+            height: '600px',
             direction: isRTL ? 'rtl' : 'ltr',
             fontFamily: isRTL ? 'Arial, sans-serif' : 'inherit'
           }}
