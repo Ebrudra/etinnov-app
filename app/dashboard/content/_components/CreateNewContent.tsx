@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect, useContext } from 'react'
 import FormSection from '../_components/FormSection'
-import OutputSection from '../_components/OutputSection'
+import OutputSection from './OutputSections'
 import Templates from '@/app/(data)/Templates'
 import { TEMPLATE } from '../../_components/TemplateListSection'
 import { Button } from '@/components/ui/button'

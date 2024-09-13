@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useSearchParams } from 'next/navigation'
 import FormSection from '../_components/FormSection'
-import OutputSection from '../_components/OutputSection'
+import OutputSection from '../_components/OutputSections'
 import Templates from '@/app/(data)/Templates'
 import { TEMPLATE } from '../../_components/TemplateListSection'
 import { Button } from '@/components/ui/button'
