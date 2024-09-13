@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { BookOpen, Clock, Cog, Layers, Award } from 'lucide-react';
@@ -8,13 +9,15 @@ const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#f5f5f5] text-[#14213d]">
       {/* Header Section */}
-      <header className="bg-gradient-to-r from-[#14213d] to-[#2a9d8f] text-white py-16">
-        <div className="container mx-auto text-center">
-          <h1 className="text-4xl font-bold mb-4">Empowering Moroccan Educators with AI-Driven Solutions</h1>
-          <p className="text-xl mb-6">Revolutionize Your Classroom with AI: Save Time, Reduce Burnout, and Build Future-Ready Skills.</p>
-          <Button size="lg" className="bg-[#e76f51] hover:bg-[#d35436] text-white">
-            Get Started for Free
-          </Button>
+      <header className="bg-gradient-to-r from-[#14213d] to-[#2a9d8f] text-white min-h-screen flex items-center justify-center">
+        <div className="container mx-auto text-center px-4">
+          <h1 className="font-poppins text-5xl font-bold mb-6">Empowering Moroccan Educators with AI-Driven Solutions</h1>
+          <p className="text-2xl mb-8 max-w-3xl mx-auto">Revolutionize Your Classroom with AI: Save Time, Reduce Burnout, and Build Future-Ready Skills.</p>
+          <Link href="/sign-up">
+            <Button size="lg" className="bg-[#e76f51] hover:bg-[#d35436] text-white text-lg px-8 py-3">
+              Get Started for Free
+            </Button>
+          </Link>
         </div>
       </header>
 
@@ -27,7 +30,7 @@ const LandingPage: React.FC = () => {
               <BookOpen className="mr-2" size={20} />
               Educator Empowerment
             </h3>
-            <h1 className="text-3xl font-bold mb-2">Foster AI Literacy Among Educators</h1>
+            <h1 className="font-poppins text-3xl font-bold mb-2">Foster AI Literacy Among Educators</h1>
             <h2 className="text-xl text-[#4a4a4a] mb-4">Empower Your Teaching with AI Literacy</h2>
             <div className="flex flex-wrap items-center">
               <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
@@ -60,7 +63,7 @@ const LandingPage: React.FC = () => {
               <Clock className="mr-2" size={20} />
               Efficiency Boost
             </h3>
-            <h1 className="text-3xl font-bold mb-2">Save Time, Fight Burnout, & Promote Sustainability</h1>
+            <h1 className="font-poppins text-3xl font-bold mb-2">Save Time, Fight Burnout, & Promote Sustainability</h1>
             <h2 className="text-xl text-[#4a4a4a] mb-4">AI Solutions Designed to Save You Time and Energy</h2>
             <div className="flex flex-wrap items-center">
               <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
@@ -94,7 +97,7 @@ const LandingPage: React.FC = () => {
               <Cog className="mr-2" size={20} />
               Skill Development
             </h3>
-            <h1 className="text-3xl font-bold mb-2">Build AI Competencies and Skills</h1>
+            <h1 className="font-poppins text-3xl font-bold mb-2">Build AI Competencies and Skills</h1>
             <h2 className="text-xl text-[#4a4a4a] mb-4">Robust AI Training Resources at Your Fingertips</h2>
             <div className="flex flex-wrap items-center">
               <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
@@ -127,7 +130,7 @@ const LandingPage: React.FC = () => {
               <Layers className="mr-2" size={20} />
               Seamless Integration
             </h3>
-            <h1 className="text-3xl font-bold mb-2">Seamless Integration with Your Existing LMS</h1>
+            <h1 className="font-poppins text-3xl font-bold mb-2">Seamless Integration with Your Existing LMS</h1>
             <h2 className="text-xl text-[#4a4a4a] mb-4">Works with Your Learning Management System</h2>
             <div className="flex flex-wrap items-center">
               <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
@@ -160,7 +163,7 @@ const LandingPage: React.FC = () => {
               <Award className="mr-2" size={20} />
               Standards Alignment
             </h3>
-            <h1 className="text-3xl font-bold mb-2">Curriculum Compliant</h1>
+            <h1 className="font-poppins text-3xl font-bold mb-2">Curriculum Compliant</h1>
             <h2 className="text-xl text-[#4a4a4a] mb-4">Aligned with the Moroccan Educational Standards</h2>
             <div className="flex flex-wrap items-center">
               <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
@@ -192,9 +195,11 @@ const LandingPage: React.FC = () => {
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Join the AI Revolution in Education</h2>
           <p className="mb-6">Be a part of a growing community of forward-thinking educators in Morocco. Start using AI to make a real difference in your classroom.</p>
-          <Button size="lg" className="bg-[#e76f51] hover:bg-[#d35436] text-white mb-8">
-            Sign Up Now
-          </Button>
+          <Link href="/sign-up">
+            <Button size="lg" className="bg-[#e76f51] hover:bg-[#d35436] text-white mb-8">
+              Sign Up Now
+            </Button>
+          </Link>
           <div className="flex justify-center space-x-4 mb-4">
             <a href="#" className="text-white hover:text-[#2a9d8f]">About Us</a>
             <a href="#" className="text-white hover:text-[#2a9d8f]">Contact Us</a>
