@@ -58,13 +58,13 @@ function HistoryPage() {
   }
 
   return (
-    <div className="m-5 p-10 shadow-md border rounded-lg  bg-white">
-      <h1 className="text-2xl font-bold my-5">History</h1>
-      <p className="mb-5">Search your previously generated AI content</p>
+    <div className="m-5 p-10 shadow-md border rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700">
+      <h1 className="text-2xl font-bold my-5 text-gray-900 dark:text-gray-100">History</h1>
+      <p className="mb-5 text-gray-700 dark:text-gray-300">Search your previously generated AI content</p>
       <div className="overflow-x-auto">
         <table className="w-full table-auto">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100">
               <th className="px-4 py-2 text-left">TEMPLATE</th>
               <th className="px-4 py-2 text-left">AI RESP</th>
               <th className="px-4 py-2 text-left">DATE</th>
@@ -75,15 +75,17 @@ function HistoryPage() {
           </thead>
           <tbody>
             {historyItems.map((item) => (
-              <tr key={item.id} className="border-b">
-                <td className="px-4 py-2">{item.templateSlug}</td>
-                <td className="px-4 py-2">{item.aiResponse.substring(0, 100)}...</td>
-                <td className="px-4 py-2">{item.createdAt}</td>
-                <td className="px-4 py-2">{item.wordCount}</td>
+              <tr key={item.id} className="border-b dark:border-gray-600">
+                <td className="px-4 py-2 text-gray-900 dark:text-gray-100">{item.templateSlug}</td>
+                <td className="px-4 py-2 text-gray-700 dark:text-gray-300">
+                  {item.aiResponse.substring(0, 100)}...
+                </td>
+                <td className="px-4 py-2 text-gray-700 dark:text-gray-300">{item.createdAt}</td>
+                <td className="px-4 py-2 text-gray-700 dark:text-gray-300">{item.wordCount}</td>
                 <td className="px-4 py-2">
                   <button
                     onClick={() => copyToClipboard(item.aiResponse)}
-                    className="text-blue-500 hover:text-blue-700"
+                    className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-500"
                   >
                     Copy
                   </button>

@@ -50,6 +50,7 @@ function FormSection({ selectedTemplate, userFormInput, loading, initialFormData
                         name={item.name}
                         required={item?.required}
                         onChange={handleInputChange}
+                        className="dark:bg-gray-800 dark:text-gray-100"
                     />
                 );
             case 'textarea':
@@ -58,6 +59,7 @@ function FormSection({ selectedTemplate, userFormInput, loading, initialFormData
                         name={item.name}
                         required={item?.required}
                         onChange={handleInputChange}
+                        className="dark:bg-gray-800 dark:text-gray-100"
                     />
                 );
             case 'select':
@@ -67,13 +69,13 @@ function FormSection({ selectedTemplate, userFormInput, loading, initialFormData
                         required={item?.required}
                         onValueChange={(value) => handleSelectChange(value, item.name)}
                     >
-                        <SelectTrigger className="w-full">
+                        <SelectTrigger className="w-full dark:bg-gray-800 dark:text-gray-100">
                             <SelectValue placeholder={`Select ${item.label}`} />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="dark:bg-gray-800">
                             <SelectGroup>
                                 {item.options && item.options.map((option: any) => (
-                                    <SelectItem key={option.value} value={option.value}>
+                                    <SelectItem key={option.value} value={option.value} className="dark:text-gray-100">
                                         {option.label}
                                     </SelectItem>
                                 ))}
@@ -88,14 +90,14 @@ function FormSection({ selectedTemplate, userFormInput, loading, initialFormData
                         required={item?.required}
                         onValueChange={(value) => handleSelectChange(value, item.name)}
                     >
-                        <SelectTrigger className="w-full">
+                        <SelectTrigger className="w-full dark:bg-gray-800 dark:text-gray-100">
                             <SelectValue placeholder="Select Grade Level" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="dark:bg-gray-800">
                             <SelectGroup>
-                                <SelectLabel>Year Levels</SelectLabel>
+                                <SelectLabel className="dark:text-gray-100">Year Levels</SelectLabel>
                                 {[...Array(12)].map((_, i) => (
-                                    <SelectItem key={i} value={`${i + 1}`.padStart(2, '0')}>
+                                    <SelectItem key={i} value={`${i + 1}`.padStart(2, '0')} className="dark:text-gray-100">
                                         {`${i + 1}`.padStart(2, '0')}
                                     </SelectItem>
                                 ))}
@@ -110,15 +112,15 @@ function FormSection({ selectedTemplate, userFormInput, loading, initialFormData
                         required={item?.required}
                         onValueChange={(value) => handleSelectChange(value, item.name)}
                     >
-                        <SelectTrigger className="w-full">
+                        <SelectTrigger className="w-full dark:bg-gray-800 dark:text-gray-100">
                             <SelectValue placeholder="Select Output language" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="dark:bg-gray-800">
                             <SelectGroup>
-                                <SelectLabel>Languages</SelectLabel>
-                                <SelectItem value="English">EN</SelectItem>
-                                <SelectItem value="French">FR</SelectItem>
-                                <SelectItem value="Arabic">AR</SelectItem>
+                                <SelectLabel className="dark:text-gray-100">Languages</SelectLabel>
+                                <SelectItem value="English" className="dark:text-gray-100">EN</SelectItem>
+                                <SelectItem value="French" className="dark:text-gray-100">FR</SelectItem>
+                                <SelectItem value="Arabic" className="dark:text-gray-100">AR</SelectItem>
                             </SelectGroup>
                         </SelectContent>
                     </Select>
@@ -131,6 +133,7 @@ function FormSection({ selectedTemplate, userFormInput, loading, initialFormData
                         required={item?.required}
                         onChange={handleInputChange}
                         min={0}
+                        className="dark:bg-gray-800 dark:text-gray-100"
                     />
                 );
             default:
@@ -139,26 +142,26 @@ function FormSection({ selectedTemplate, userFormInput, loading, initialFormData
     };
 
     return (
-        <div className='p-5 shadow-md border rounded-lg  bg-white'>
+        <div className="p-5 shadow-md border rounded-lg bg-white dark:bg-gray-900 dark:text-gray-100">
             {/* @ts-ignore */}
             <Image src={selectedTemplate?.icon} alt='icon' width={100} height={100} />
-            <h2 className='font-bold text-2xl mb-2 text-primary'>{selectedTemplate?.name}</h2>
-            <p className='text-gray-500'>{selectedTemplate?.description}</p>
+            <h2 className="font-bold text-2xl mb-2 text-primary dark:text-gray-100">{selectedTemplate?.name}</h2>
+            <p className="text-gray-500 dark:text-gray-400">{selectedTemplate?.description}</p>
 
-            <form className='mt-6' onSubmit={onSubmit}>
+            <form className="mt-6" onSubmit={onSubmit}>
                 {selectedTemplate?.form?.map((item, index) => (
-                    <div key={index} className='my-2 flex flex-col gap-2 mb-7'>
-                        <label className='font-bold'>{item.label}</label>
+                    <div key={index} className="my-2 flex flex-col gap-2 mb-7">
+                        <label className="font-bold dark:text-gray-100">{item.label}</label>
                         {renderFormField(item)}
                     </div>
                 ))}
 
                 <Button
                     type="submit"
-                    className='w-full py-6'
+                    className="w-full py-6 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200"
                     disabled={loading || totalUsage > limitUsage}
                 >
-                    {loading && <Loader2Icon className='animate-spin mx-2' />} {buttonText}
+                    {loading && <Loader2Icon className="animate-spin mx-2" />} {buttonText}
                 </Button>
             </form>
         </div>

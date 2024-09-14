@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import FormSection from '../_components/FormSection'
 import OutputSection from '../_components/OutputSection'
 import Templates from '@/app/(data)/Templates'
@@ -25,7 +25,6 @@ function CreateNewContent({ templateSlug, searchParams }: PROPS) {
     const [formData, setFormData] = useState<any>({})
     const { user } = useUser()
 
-
     useEffect(() => {
         const formDataParam = searchParams.get('formData')
         const aiResponseParam = searchParams.get('aiResponse')
@@ -44,16 +43,16 @@ function CreateNewContent({ templateSlug, searchParams }: PROPS) {
     }, [searchParams])
 
     const GenerateAIContent = async (formData: any) => {
-        setLoading(true);
+        setLoading(true)
         
-        const selectedPrompt = selectedTemplate?.aiPrompt;
-        const finalAIPrompt = JSON.stringify(formData) + ", " + selectedPrompt;
-        const result = await chatSession.sendMessage(finalAIPrompt);
+        const selectedPrompt = selectedTemplate?.aiPrompt
+        const finalAIPrompt = JSON.stringify(formData) + ", " + selectedPrompt
+        const result = await chatSession.sendMessage(finalAIPrompt)
 
-        setAIOutput(result.response.text());
+        setAIOutput(result.response.text())
         await saveInDb(formData, selectedTemplate?.slug, result.response.text())
 
-        setLoading(false);
+        setLoading(false)
     }
 
     const saveInDb = async (formData: any, slug: any, aiResp: string) => {
@@ -67,18 +66,20 @@ function CreateNewContent({ templateSlug, searchParams }: PROPS) {
     }
 
     return (
-        <div className='p-10 '>
+        <div className="p-10 bg-white dark:bg-gray-900 dark:text-gray-100 min-h-screen">
             <Link href="/dashboard">
-                <Button> <ArrowLeft /> Back </Button>
+                <Button className="dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-200">
+                    <ArrowLeft /> Back
+                </Button>
             </Link>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-10 py-5'>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 py-5">
                 <FormSection
                     selectedTemplate={selectedTemplate}
                     userFormInput={(v: any) => GenerateAIContent(v)}
                     loading={loading}
                     initialFormData={formData}
                 />
-                <div className='col-span-2'>
+                <div className="col-span-2">
                     <OutputSection aiOutput={aiOutput} />
                 </div>
             </div>
