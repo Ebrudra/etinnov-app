@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 
 const TopMenu: React.FC = () => {
   return (
-    <nav className="bg-white shadow-md">
+    <nav className="bg-white shadow-md main-top-menu">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">

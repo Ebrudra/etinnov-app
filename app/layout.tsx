@@ -26,15 +26,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <ClerkProvider>
       <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
         <body className={`font-sans ${inter.className}`}>
           <TopMenu />
-          <main>{children}</main>
+          {children}
         </body>
       </html>
     </ClerkProvider>

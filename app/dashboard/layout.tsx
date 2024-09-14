@@ -11,6 +11,12 @@ function layout({
 
   return (
     <div className='bg-slate-100 h-screen'>
+      <style jsx global>{`
+        .main-top-menu {
+          display: none !important;
+        }
+      `}</style>
+
       <div className='md:w-64 hidden md:block fixed'>
         <SideNav />
       </div>
