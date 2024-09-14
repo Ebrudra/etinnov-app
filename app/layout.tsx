@@ -34,7 +34,7 @@ export default function RootLayout({
       <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
         <body className={`font-sans ${inter.className}`}>
           <TopMenu />
-          {children}
+          <main>{children}</main>
         </body>
       </html>
     </ClerkProvider>

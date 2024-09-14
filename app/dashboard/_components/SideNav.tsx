@@ -37,10 +37,10 @@ function SideNav() {
   }, []);
 
   return (
-    <div className=' relative h-screen p-5 shadow-sm border  bg-white dark:bg-gray-900'>
-      <div className='flex justify-center pb-5'>
-        <Image src={'/next.svg'} alt={'logo'} width={100} height={100} />
-      </div>
+    <div className=' relative h-screen p-5 shadow-sm border bg-white dark:bg-gray-900'>
+       <div className='flex justify-start pb-5'>
+       <Image src={'/etinnov.svg'} alt={'logo'} width={100} height={100} />
+       </div>
       <hr className="my-5 border dark:border-gray-700" />
       <div className="mt-3">
         {MenuList.map((menu, index) => (
