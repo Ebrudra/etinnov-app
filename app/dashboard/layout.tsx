@@ -1,8 +1,7 @@
 "use client"
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import SideNav from './_components/SideNav';
 import Header from './_components/Header';
-
 function layout({
   children,
 }: Readonly<{
@@ -11,17 +10,20 @@ function layout({
 
   return (
     <div className='bg-slate-100 dark:bg-gray-900 h-screen'>
+      <style jsx global>{`
+        .main-top-menu {
+          display: none !important;
+        }
+      `}</style>
+
       <div className='md:w-64 hidden md:block fixed'>
         <SideNav />
       </div>
       <div className='md:ml-64'>
         <Header />
-        <div className="p-5 bg-white dark:bg-gray-800 dark:text-gray-100 min-h-screen">
-          {children}
-        </div>
+        {children}
       </div>
     </div>
   )
 }
-
 export default layout

@@ -12,13 +12,11 @@ const poppins = Poppins({
   variable: '--font-poppins',
   display: 'swap',
 })
-
 const inter = Inter({ 
   subsets: ["latin"],
   variable: '--font-inter',
   display: 'swap',
 });
-
 export const metadata: Metadata = {
   title: "etinnov APP",
   description: "Fostering AI Literacy",
@@ -34,9 +32,9 @@ export default function RootLayout({
       <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
         <body className={`font-sans ${inter.className}`}>
           <TopMenu />
-          <main>{children}</main>
+          {children}
         </body>
       </html>
     </ClerkProvider>
-  )
-}
+    )
+  }

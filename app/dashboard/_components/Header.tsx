@@ -2,12 +2,13 @@ import { UserButton } from '@clerk/nextjs';
 import { Search } from 'lucide-react';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'next-i18next'; // Import useTranslation
+import i18n from 'i18next'; // Import i18n to change the language
 
 const Header = () => {
-  // State to track the current theme (light/dark). Initial state is null to avoid hydration mismatch.
+  const { t } = useTranslation(); // Use useTranslation to get the translation function
   const [theme, setTheme] = useState<'light' | 'dark' | null>(null);
 
-  // Function to toggle between light and dark mode
   const toggleTheme = () => {
     if (theme) {
       const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -20,7 +21,6 @@ const Header = () => {
     }
   };
 
-  // Apply the saved theme on component mount
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
@@ -29,6 +29,11 @@ const Header = () => {
     }
   }, []);
 
+  // Function to handle language change
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+  };
+
   return (
     <div className='p-5 shadow-sm border-b-2 flex justify-between items-center bg-white dark:bg-gray-800'>
       {/* Search bar */}
@@ -36,18 +41,28 @@ const Header = () => {
         <Search />
         <input
           type='text'
-          placeholder='Search...'
+          placeholder={t('Search...')} // Use translated text
           className='outline-none bg-white dark:bg-gray-700 dark:text-white'
         />
       </div>
 
-      {/* Right section: Membership and User */}
+      {/* Right section: Membership, Language, and User */}
       <div className='flex gap-3 items-center'>
         <Link href='/dashboard/billing'>
           <h2 className='bg-primary p-1 rounded-full text-xs text-white px-2 dark:bg-primary dark:text-primary-foreground'>
-            🔥 Join Membership just for 2 Dh/Day 🔥
+            🔥 {t('join membership')} 🔥
           </h2>
         </Link>
+
+        {/* Language Selector */}
+        <select
+          onChange={(e) => changeLanguage(e.target.value)}
+          className='p-2 border rounded-md bg-white dark:bg-gray-700 text-black dark:text-white'
+        >
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="ar">العربية</option>
+        </select>
 
         {/* Dark/Light mode toggle button */}
         <button

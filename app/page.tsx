@@ -55,7 +55,6 @@ const LandingPage: React.FC = () => {
             </div>
           </CardContent>
         </Card>
-
         {/* Save Time Section */}
         <Card className="mb-16 bg-white rounded-lg shadow-lg">
           <CardContent className="p-8">
@@ -89,7 +88,6 @@ const LandingPage: React.FC = () => {
             </div>
           </CardContent>
         </Card>
-
         {/* AI Competencies Section */}
         <Card className="mb-16 bg-white rounded-lg shadow-lg">
           <CardContent className="p-8">
@@ -122,7 +120,6 @@ const LandingPage: React.FC = () => {
             </div>
           </CardContent>
         </Card>
-
         {/* LMS Integration Section */}
         <Card className="mb-16 bg-white rounded-lg shadow-lg">
           <CardContent className="p-8">
@@ -155,7 +152,6 @@ const LandingPage: React.FC = () => {
             </div>
           </CardContent>
         </Card>
-
         {/* Curriculum Compliance Section */}
         <Card className="mb-16 bg-white rounded-lg shadow-lg">
           <CardContent className="p-8">
@@ -163,7 +159,6 @@ const LandingPage: React.FC = () => {
               <Award className="mr-2" size={20} />
               Standards Alignment
             </h3>
-            <h1 className="font-poppins text-3xl font-bold mb-2">Curriculum Compliant</h1>
             <h2 className="text-xl text-[#4a4a4a] mb-4">Aligned with the Moroccan Educational Standards</h2>
             <div className="flex flex-wrap items-center">
               <div className="w-full lg:w-1/2 mb-6 lg:mb-0">
@@ -189,17 +184,11 @@ const LandingPage: React.FC = () => {
           </CardContent>
         </Card>
       </main>
-
       {/* Footer Section */}
       <footer className="bg-[#14213d] text-white py-12">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Join the AI Revolution in Education</h2>
           <p className="mb-6">Be a part of a growing community of forward-thinking educators in Morocco. Start using AI to make a real difference in your classroom.</p>
-          <Link href="/sign-up">
-            <Button size="lg" className="bg-[#e76f51] hover:bg-[#d35436] text-white mb-8">
-              Sign Up Now
-            </Button>
-          </Link>
           <div className="flex justify-center space-x-4 mb-4">
             <a href="#" className="text-white hover:text-[#2a9d8f]">About Us</a>
             <a href="#" className="text-white hover:text-[#2a9d8f]">Contact Us</a>
@@ -216,5 +205,4 @@ const LandingPage: React.FC = () => {
     </div>
   );
 };
-
 export default LandingPage;

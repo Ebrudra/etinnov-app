@@ -52,7 +52,7 @@ function UsageTrack() {
                 </h2>
             </div>
             <Link href="/dashboard/billing">
-                <Button variant={'secondary'} className="w-full my-3">
+            <Button variant={'secondary'} className="w-full my-3">
                     Upgrade
                 </Button>
             </Link>
